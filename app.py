@@ -237,10 +237,8 @@ color:#777;
 </div>
 
 <div class="card">
-<h2>{{top}}</h2>
 </div>
 
-</div>
 
 <div class="search-box">
 
