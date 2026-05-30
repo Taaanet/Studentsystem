@@ -359,10 +359,10 @@ def dashboard():
                     TOTAL_MARK = 20
                     mark_percentage = round((student_mark / TOTAL_MARK) * 100,1)
 
-                  if mark_percentage > 100:
-                      mark_percentage = 100
+                    if mark_percentage > 100:
+                        mark_percentage = 100
 
-               except:
+                except:
                     mark_percentage = 0
 
         else:
