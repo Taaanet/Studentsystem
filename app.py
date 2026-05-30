@@ -236,12 +236,6 @@ color:#777;
 <p>Average Mark</p>
 </div>
 
-<div class="card">
-<h2>{{top}}</h2>
-<p>Top Student</p>
-</div>
-
-</div>
 
 <div class="search-box">
 
@@ -364,8 +358,8 @@ def dashboard():
                 try:
                     mark_percentage = round(float(result["MARK"]), 1)
 
-                    if mark_percentage > 100:
-                        mark_percentage = 100
+                    if mark_percentage > 20:
+                        mark_percentage = 20
 
                 except:
                     pass
@@ -380,9 +374,7 @@ def dashboard():
         HTML,
         total=total_students,
         avg=avg_mark,
-        top=top_student["NAME"]
-        if top_student is not None
-        else "N/A",
+        
         result=result,
         mark_percentage=mark_percentage
     )
