@@ -21,7 +21,7 @@ HTML = """
 <!DOCTYPE html>
 <html>
 <head>
-    <title>School Dashboard</title>
+    <title>Manarat Al Madina Secondary Schools</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
 
     <style>
@@ -110,7 +110,7 @@ HTML = """
 
 <div class="container">
 
-    <h1>🏫 School Dashboard</h1>
+    <h1>🏫Manarat Al Madina Secondary Schoolsd</h1>
 
     <!-- 📊 Stats -->
     <div class="cards">
