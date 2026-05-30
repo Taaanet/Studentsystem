@@ -22,10 +22,7 @@ avg_mark = (
     else 0
 )
 
-top_student = None
 
-if "MARK" in df.columns and not df.empty:
-    top_student = df.loc[df["MARK"].idxmax()]
 
 # ==========================
 # HTML
@@ -228,7 +225,7 @@ color:#777;
 
 <div class="card">
 <h2>{{total}}</h2>
-
+<p>Total Students</p>
 </div>
 
 <div class="card">
@@ -236,9 +233,7 @@ color:#777;
 <p>Average Mark</p>
 </div>
 
-<div class="card">
 </div>
-
 
 <div class="search-box">
 
@@ -374,14 +369,11 @@ def dashboard():
             }
 
     return render_template_string(
-        HTML,
-        total=total_students,
-        avg=avg_mark,
-        
-        if top_student is not None
-        else "N/A",
-        result=result,
-        mark_percentage=mark_percentage
+    HTML,
+    total=total_students,
+    avg=avg_mark,
+    result=result,
+    mark_percentage=mark_percentage
     )
 
 # ==========================
