@@ -150,22 +150,7 @@ HTML = """
         </div>
     {% endif %}
 
-    <!-- 📋 Table -->
-    <table>
-        <tr>
-            {% for col in columns %}
-                <th>{{col}}</th>
-            {% endfor %}
-        </tr>
-
-        {% for row in table_data %}
-        <tr>
-            {% for col in columns %}
-                <td>{{row[col]}}</td>
-            {% endfor %}
-        </tr>
-        {% endfor %}
-    </table>
+   
 
 </div>
 
