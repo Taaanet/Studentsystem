@@ -349,35 +349,38 @@ def dashboard():
 
         match = df[df["ID"].astype(str) == str(student_id)]
 
-    if not match.empty:
+        if not match.empty:
 
-           result = match.iloc[0].to_dict()
+            result = match.iloc[0].to_dict()
 
             if "MARK" in result:
 
-              try:
-  
-                   student_mark = float(result["MARK"])
+    try:
 
-                   TOTAL_MARK = 20
+        student_mark = float(result["MARK"])
 
-                   mark_percentage = round(
-                    (student_mark / TOTAL_MARK) * 100,
-                     1
-                 )
+        TOTAL_MARK = 20
 
-               if mark_percentage > 100:
-                   mark_percentage = 100
- 
-          except:
-            mark_percentage = 0
+        mark_percentage = round(
+            (student_mark / TOTAL_MARK) * 100,
+            1
+        )
+        
+        print("Percentage =", mark_percentage)
+        
+        if mark_percentage > 100:
+            mark_percentage = 100
 
-     else:
+    except Exception as e:
+        print("ERROR:", e)
+        mark_percentage = 0
 
-        result = {
-           "error": "Student not found"
-       }
- 
+        else:
+
+            result = {
+                "error": "Student not found"
+            }
+
     return render_template_string(
         HTML,
         total=total_students,
