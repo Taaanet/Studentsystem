@@ -357,21 +357,18 @@ def dashboard():
                     student_mark = float(result["MARK"])
 
                     TOTAL_MARK = 20
-                    mark_percentage = round(
-                        (student_mark / TOTAL_MARK) * 100,
-                        1
-                 )
+                    mark_percentage = round((student_mark / TOTAL_MARK) * 100,1)
 
                   if mark_percentage > 100:
                       mark_percentage = 100
 
-                except:
+               except:
                     mark_percentage = 0
 
         else:
 
             result = {
-                 "error": "Student not found"
+                "error": "Student not found"
             }
 
     return render_template_string(
