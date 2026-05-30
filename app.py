@@ -322,7 +322,7 @@ style="width:{{mark_percentage}}%">
 {% endif %}
 
 <div class="footer">
-Manarat Al Madina Schools © 2026
+taaanet@gmail.com © 2026 © by Taha_Mohamadd 0554289816
 </div>
 
 </div>
@@ -373,7 +373,7 @@ def dashboard():
     total=total_students,
     avg=avg_mark,
     result=result,
-    mark_percentage=mark_percentage
+    mark_percentage=mark_percentage*5
     )
 
 # ==========================
