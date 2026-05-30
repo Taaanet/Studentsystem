@@ -354,13 +354,19 @@ def dashboard():
             if "MARK" in result:
 
                 try:
-                    mark_percentage = round(float(result["MARK"]), 1)
+                    student_mark = float(result["MARK"])
 
-                    if mark_percentage > 100:
-                        mark_percentage = 100
+                    TOTAL_MARK = 20
+                    mark_percentage = round(
+                        (student_mark / TOTAL_MARK) * 100,
+                        1
+                 )
+
+                  if mark_percentage > 100:
+                      mark_percentage = 100
 
                 except:
-                    pass
+                    mark_percentage = 0
 
         else:
 
@@ -373,7 +379,7 @@ def dashboard():
     total=total_students,
     avg=avg_mark,
     result=result,
-    mark_percentage=mark_percentage*5
+    mark_percentage=mark_percentage
     )
 
 # ==========================
