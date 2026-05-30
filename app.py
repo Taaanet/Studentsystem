@@ -322,7 +322,7 @@ style="width:{{mark_percentage}}%">
 {% endif %}
 
 <div class="footer">
-taaanet@gmail.com © 2026 © by Taha_Mohamadd 0554289816
+taaanet@gmail.com © 2026 © by Taha_Mohamad © 0554289816
 </div>
 
 </div>
