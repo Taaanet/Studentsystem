@@ -2,8 +2,7 @@ from flask import Flask, request, render_template_string, send_from_directory
 import pandas as pd
 import os
 
-app = Flask(**name**)
-
+app = Flask(__name__)
 # -----------------------------
 
 # تحميل ملف الطلاب
