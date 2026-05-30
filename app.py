@@ -371,7 +371,7 @@ def dashboard():
         else:
 
             result = {
-                "error": "Student not found"
+                 "error": "Student not found"
             }
 
     return render_template_string(
