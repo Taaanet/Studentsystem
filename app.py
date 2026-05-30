@@ -228,7 +228,7 @@ color:#777;
 
 <div class="card">
 <h2>{{total}}</h2>
-<p>Total Students</p>
+
 </div>
 
 <div class="card">
@@ -238,7 +238,6 @@ color:#777;
 
 <div class="card">
 <h2>{{top}}</h2>
-<p>Top Student</p>
 </div>
 
 </div>
@@ -380,7 +379,7 @@ def dashboard():
         HTML,
         total=total_students,
         avg=avg_mark,
-        top=top_student["NAME"]
+        
         if top_student is not None
         else "N/A",
         result=result,
