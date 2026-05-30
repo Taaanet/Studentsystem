@@ -1,11 +1,8 @@
-from flask import Flask, request, render_template_string, send_from_directory
+from flask import Flask, request, render_template_string
 import pandas as pd
 import os
 
 app = Flask(__name__)
-@app.route("/logo")
-def logo():
-    return send_from_directory(".", "logo.png")
 
 # 📁 Excel file
 EXCEL_FILE = "students.xlsx"
@@ -141,46 +138,34 @@ HTML = """
         </form>
     </div>
 
-   {% if result %}
-
-<div class="card" style="margin-top:20px; text-align:right">
-
-    {% if result.error %}
-
-        <p style="color:red">{{ result.error }}</p>
-
-    {% else %}
-
-        <div style="display:flex;align-items:center;gap:20px;justify-content:center">
-
-            <img src="/logo"
-                 width="120"
-                 alt="School Logo">
-
-            <div>
-
-                <h2>{{ result["NAME"] }}</h2>
-
-                <p><b>ID:</b> {{ result["ID"] }}</p>
-
-                <p><b>Mark:</b> {{ result["MARK"] }}</p>
-
-                <p><b>Average:</b> {{ avg }}</p>
-
-                <p><b>Highest Mark:</b> {{ highest_mark }}</p>
-
-            </div>
-
+    {% if result %}
+        <div class="card">
+            {% if result.error %}
+                <p style="color:red">{{ result.error }}</p>
+            {% else %}
+                {% for k, v in result.items() %}
+                    <p><b>{{k}}</b>: {{v}}</p>
+                {% endfor %}
+            {% endif %}
         </div>
-
     {% endif %}
 
-</div>
-
-{% endif %}
-
     <!-- 📋 Table -->
-    
+    <table>
+        <tr>
+            {% for col in columns %}
+                <th>{{col}}</th>
+            {% endfor %}
+        </tr>
+
+        {% for row in table_data %}
+        <tr>
+            {% for col in columns %}
+                <td>{{row[col]}}</td>
+            {% endfor %}
+        </tr>
+        {% endfor %}
+    </table>
 
 </div>
 
@@ -202,13 +187,14 @@ def dashboard():
             result = {"error": "Student not found"}
 
     return render_template_string(
-    HTML,
-    total=total_students,
-    avg=avg_mark,
-    highest_mark=highest_mark,
-    top=top_student["NAME"] if top_student is not None else "N/A",
-    result=result
-)
+        HTML,
+        total=total_students,
+        avg=avg_mark,
+        top=top_student["NAME"] if top_student is not None else "N/A",
+        result=result,
+        columns=df.columns,
+        table_data=df.to_dict(orient="records")
+    )
 
 if __name__ == "__main__":
     port = int(os.environ.get("PORT", 5000))
