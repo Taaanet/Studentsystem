@@ -355,14 +355,25 @@ def dashboard():
 
             if "MARK" in result:
 
-                try:
-                    mark_percentage = round(float(result["MARK"]), 1)
+    try:
 
-                    if mark_percentage > 20:
-                        mark_percentage = 20
+        student_mark = float(result["MARK"])
 
-                except:
-                    pass
+        TOTAL_MARK = 20
+
+        mark_percentage = round(
+            (student_mark / TOTAL_MARK) * 100,
+            1
+        )
+        
+        print("Percentage =", mark_percentage)
+        
+        if mark_percentage > 100:
+            mark_percentage = 100
+
+    except Exception as e:
+        print("ERROR:", e)
+        mark_percentage = 0
 
         else:
 
